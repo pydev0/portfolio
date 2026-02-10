@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Sentiment Analyzer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/sentiment-analyzer.css">
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1><span class="live"></span> Social Media Sentiment Analyzer</h1>
+    <p>Dataset: Kaggle Twitter Sentiment140 · 1.6M tweets · BERT-base-uncased</p>
+  </div>
+  <div class="model-badge">BERT · Fine-tuned</div>
+</div>
+
+<!-- KPIs -->
+<div class="kpis">
+  <div class="kpi"><div class="l">Posts Analyzed</div><div class="v" style="color:var(--acc)">1,847</div><div class="d" style="color:var(--t3)">last 24 hours</div></div>
+  <div class="kpi"><div class="l">Positive</div><div class="v" style="color:var(--grn)">52.3%</div><div class="d" style="color:var(--grn)">↑ 3.1% from yesterday</div></div>
+  <div class="kpi"><div class="l">Negative</div><div class="v" style="color:var(--red)">28.1%</div><div class="d" style="color:var(--red)">↑ 1.4% from yesterday</div></div>
+  <div class="kpi"><div class="l">Neutral</div><div class="v" style="color:var(--t2)">19.6%</div><div class="d" style="color:var(--t3)">↓ 4.5% from yesterday</div></div>
+  <div class="kpi"><div class="l">Avg Confidence</div><div class="v" style="color:var(--yl)">87.4%</div><div class="d" style="color:var(--t3)">model certainty</div></div>
+</div>
+
+<!-- Analyzer -->
+<div class="analyzer">
+  <h2>🔍 Analyze Any Text</h2>
+  <div class="sub">Enter text below to see real-time BERT sentiment classification with token-level analysis</div>
+  <div class="input-row">
+    <textarea class="text-input" id="textInput" rows="2" placeholder="Type or paste any text — tweet, review, comment..."></textarea>
+    <button class="analyze-btn" onclick="analyze()">⚡ Analyze</button>
+  </div>
+  <div class="examples">
+    <span style="font-size:.72rem;color:var(--t3);margin-right:.3rem">Try:</span>
+    <button class="ex-btn" onclick="tryExample(0)">Positive review</button>
+    <button class="ex-btn" onclick="tryExample(1)">Negative complaint</button>
+    <button class="ex-btn" onclick="tryExample(2)">Neutral statement</button>
+    <button class="ex-btn" onclick="tryExample(3)">Mixed feelings</button>
+    <button class="ex-btn" onclick="tryExample(4)">Sarcastic</button>
+  </div>
+
+  <div class="result" id="resultBox">
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="rl">Prediction</div>
+        <div class="rv" id="resSent">—</div>
+      </div>
+      <div class="sep"></div>
+      <div class="result-item">
+        <div class="rl">Confidence</div>
+        <div class="rv" id="resConf" style="font-family:'JetBrains Mono',monospace">—</div>
+      </div>
+      <div class="sep"></div>
+      <div class="conf-bar-wrap">
+        <div class="rl">Class Probabilities</div>
+        <div class="conf-bars">
+          <div class="conf-row"><span class="conf-label" style="color:var(--grn)">Positive</span><div class="conf-track"><div class="conf-fill" id="barPos" style="width:0%;background:var(--grn)"></div></div><span class="conf-pct" id="pctPos">0%</span></div>
+          <div class="conf-row"><span class="conf-label" style="color:var(--red)">Negative</span><div class="conf-track"><div class="conf-fill" id="barNeg" style="width:0%;background:var(--red)"></div></div><span class="conf-pct" id="pctNeg">0%</span></div>
+          <div class="conf-row"><span class="conf-label" style="color:var(--t3)">Neutral</span><div class="conf-track"><div class="conf-fill" id="barNeu" style="width:0%;background:var(--t3)"></div></div><span class="conf-pct" id="pctNeu">0%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tokens" id="tokenBox"></div>
+  </div>
+</div>
+
+<!-- Charts row -->
+<div class="row r3">
+  <div class="card">
+    <div class="card-t">Sentiment Distribution</div>
+    <div class="card-s">Overall breakdown of analyzed posts</div>
+    <div class="chart-w" style="height:220px"><canvas id="distChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-t">Sentiment Over Time</div>
+    <div class="card-s">Hourly trend · Last 24 hours</div>
+    <div class="chart-w" style="height:220px"><canvas id="trendChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-t">Top Keywords</div>
+    <div class="card-s">Most frequent terms by sentiment</div>
+    <div class="cloud" id="wordCloud"></div>
+  </div>
+</div>
+
+<!-- Confidence & Topic charts -->
+<div class="row r2">
+  <div class="card">
+    <div class="card-t">Confidence Score Distribution</div>
+    <div class="card-s">How certain is the model?</div>
+    <div class="chart-w" style="height:220px"><canvas id="confChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-t">Topic Breakdown</div>
+    <div class="card-s">LDA topic modeling · Top 5 topics</div>
+    <div class="chart-w" style="height:220px"><canvas id="topicChart"></canvas></div>
+  </div>
+</div>
+
+<!-- Feed table -->
+<div class="card" style="margin-top:1.2rem">
+  <div class="card-t">Analyzed Feed — Recent Posts</div>
+  <div class="card-s">Showing latest 10 analyzed posts from Twitter & Reddit</div>
+  <table>
+    <thead><tr><th>Text</th><th>Source</th><th>Sentiment</th><th>Confidence</th><th>Topics</th></tr></thead>
+    <tbody id="feedTable"></tbody>
+  </table>
+</div>
+
+<div class="built">
+  <span>Built with Python · HuggingFace Transformers · NLTK · Streamlit · Kaggle Sentiment140</span>
+  <div class="ttags"><span class="ttag">Transformers</span><span class="ttag">NLTK</span><span class="ttag">Streamlit</span><span class="ttag">Redis</span></div>
+</div>
+
+<script src="js/sentiment-analyzer.js"></script>
+</body>
+</html>

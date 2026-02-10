@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Analytics Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/sales-dashboard.css">
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <h1><span class="live-dot"></span> Sales Analytics Dashboard</h1>
+    <p>Dataset: Kaggle Superstore Sales · 51,290 transactions · Last updated: Feb 09, 2026</p>
+  </div>
+  <div class="filters">
+    <button class="fbtn on" onclick="setRange('year',this)">2025</button>
+    <button class="fbtn" onclick="setRange('h2',this)">H2 Only</button>
+    <button class="fbtn" onclick="setRange('q4',this)">Q4 Only</button>
+  </div>
+</div>
+
+<!-- KPIs -->
+<div class="kpis" id="kpiRow">
+  <div class="kpi">
+    <div class="kpi-label">Total Revenue</div>
+    <div class="kpi-val" style="color:var(--acc)" id="kpiRev">$702,000</div>
+    <div class="kpi-change up" id="kpiRevC">↑ 12.4% vs last year</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Total Orders</div>
+    <div class="kpi-val" style="color:var(--bl)" id="kpiOrd">5,545</div>
+    <div class="kpi-change up" id="kpiOrdC">↑ 8.7% vs last year</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Avg Order Value</div>
+    <div class="kpi-val" style="color:var(--pu)" id="kpiAov">$126.60</div>
+    <div class="kpi-change up" id="kpiAovC">↑ 3.2% vs last year</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Unique Customers</div>
+    <div class="kpi-val" style="color:var(--or)" id="kpiCust">3,160</div>
+    <div class="kpi-change up" id="kpiCustC">↑ 15.1% vs last year</div>
+  </div>
+</div>
+
+<!-- Charts Row -->
+<div class="charts-row">
+  <div class="chart-card">
+    <div class="chart-title">Revenue & Orders Trend</div>
+    <div class="chart-sub">Monthly performance · Click legend to toggle</div>
+    <div class="controls-row">
+      <button class="fbtn on" onclick="switchChart('line',this)">Line</button>
+      <button class="fbtn" onclick="switchChart('bar',this)">Bar</button>
+    </div>
+    <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title">Revenue by Category</div>
+    <div class="chart-sub">Share of total sales</div>
+    <div class="chart-wrap" style="height:200px"><canvas id="donutChart"></canvas></div>
+    <div class="donut-legend" id="donutLegend"></div>
+  </div>
+</div>
+
+<!-- Bottom Row -->
+<div class="bottom-row">
+  <div class="chart-card">
+    <div class="chart-title">Monthly Customers</div>
+    <div class="chart-sub">New vs returning breakdown</div>
+    <div class="chart-wrap" style="height:220px"><canvas id="custChart"></canvas></div>
+  </div>
+  <div class="tbl-wrap">
+    <div class="tbl-header">
+      <div class="chart-title">Top Products</div>
+      <div class="chart-sub">By revenue · Top 6</div>
+    </div>
+    <table>
+      <thead><tr><th>Product</th><th>Sales</th><th>Revenue</th><th>Trend</th></tr></thead>
+      <tbody id="prodTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Built with -->
+<div class="built-with">
+  <span>Built with Python · Plotly Dash · Pandas · PostgreSQL</span>
+  <div class="tech-tags">
+    <span class="tech-tag">Plotly Dash</span>
+    <span class="tech-tag">Pandas</span>
+    <span class="tech-tag">PostgreSQL</span>
+    <span class="tech-tag">Docker</span>
+  </div>
+</div>
+
+<script src="js/sales-dashboard.js"></script>
+</body>
+</html>

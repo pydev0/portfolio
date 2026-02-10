@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Python developer specializing in data analytics, machine learning, and web automation. Available for freelance projects on Upwork and Fiverr.">
+<title>Python Developer - Data Analytics, ML & Automation Services</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+:root {
+    --bg-primary: #fefefe;
+    --bg-secondary: #f6f8fa;
+    --bg-card: #ffffff;
+    --accent: #58a6ff;
+    --accent-dim: #58a6ff22;
+    --accent-mid: #58a6ff55;
+    --text-primary: #24292f;
+    --text-secondary: #57606a;
+    --text-muted: #8b949e;
+    --border: #d0d7de;
+    --blue: #0969da;
+    --navy: #0550ae;
+    --gray: #6e7781;
+    --dark-gray: #24292f;
+    --green: #1a7f37;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg-primary);
+    background-image: 
+      radial-gradient(at 40% 20%, rgba(88, 166, 255, 0.03) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(9, 105, 218, 0.03) 0px, transparent 50%);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-logo .logo-tag {
+    font-size: 0.7rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-left: 0.4rem;
+  }
+  .nav-center {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-center a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-center a:hover { color: var(--accent); }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .nav-github {
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .nav-github:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .nav-cta {
+    padding: 0.65rem 1.5rem;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover {
+    background: #1f6feb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.4);
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(88, 166, 255, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content {
+    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: blink 2s infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+  .hero h1 .highlight {
+    color: var(--blue);
+  }
+  .hero-desc {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.6s forwards;
+  }
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.8s forwards;
+  }
+  .btn {
+    padding: 1rem 2.5rem;
+    border-radius: 10px;
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: #1f6feb;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.4);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border);
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.6s 1s forwards;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+
+  /* ---- SECTIONS ---- */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+  }
+  .section-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    line-height: 1.8;
+    margin: 0 auto 3.5rem auto;
+  }
+
+  /* ---- SERVICES ---- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .service-card {
+    background: var(--bg-card);
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(88, 166, 255, 0.04) 0%, transparent 50%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--blue));
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+  .service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 212, 170, 0.15);
+  }
+  .service-icon {
+    font-size: 2rem;
+    margin: 0 auto 1.5rem auto;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(9, 105, 218, 0.1));
+    border-radius: 16px;
+    color: var(--accent);
+    transition: all 0.3s;
+  }
+  .service-card:hover .service-icon {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(88, 166, 255, 0.2);
+  }
+  .service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+  .service-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .service-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  .service-features li {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .service-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  .service-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  /* ---- WHY CHOOSE ME ---- */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .benefit-card {
+    background: var(--bg-card);
+    background-image: 
+      radial-gradient(circle at 90% 10%, rgba(88, 166, 255, 0.04) 0%, transparent 50%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .benefit-card:nth-child(even) {
+    background-image: 
+      radial-gradient(circle at 10% 90%, rgba(9, 105, 218, 0.04) 0%, transparent 50%);
+  }
+  .benefit-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .benefit-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(9, 105, 218, 0.1));
+    border-radius: 16px;
+    color: var(--accent);
+    transition: all 0.3s;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .benefit-card:hover .benefit-icon {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(88, 166, 255, 0.2);
+  }
+  .benefit-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+  .benefit-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ---- PRICING ---- */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .pricing-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .pricing-card.featured {
+    border-color: var(--accent);
+    box-shadow: 0 0 50px var(--accent-dim);
+    transform: scale(1.05);
+  }
+  .pricing-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--accent);
+    color: var(--bg-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .pricing-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+  }
+  .pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .pricing-card .price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 1.5rem 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pricing-card .price span {
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+  .pricing-features {
+    list-style: none;
+    margin: 2rem 0;
+  }
+  .pricing-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .pricing-features li:last-child {
+    border-bottom: none;
+  }
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* ---- HOW IT WORKS ---- */
+  .process-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    text-align: left;
+  }
+  .process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .process-step {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .step-number {
+    min-width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--accent) 0%, #1f6feb 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+  }
+  .step-content {
+    padding-top: 0.5rem;
+  }
+  .step-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .step-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ---- PROJECTS ---- */
+  .projects-grid {
+    display: grid;
+    gap: 2.5rem;
+    text-align: left;
+  }
+  .project-card {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 2rem;
+    background: var(--bg-card);
+    background-image: 
+      linear-gradient(135deg, rgba(88, 166, 255, 0.03) 0%, transparent 50%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+  .project-preview {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-preview-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .preview-dashboard { background: linear-gradient(135deg, #0a2828 0%, #0d1a2e 100%); }
+  .chart-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 120px;
+  }
+  .bar {
+    width: 28px;
+    background: var(--accent);
+    border-radius: 4px 4px 0 0;
+    animation: barGrow 1.5s ease-out infinite;
+  }
+  .bar:nth-child(1) { height: 40%; animation-delay: 0s; }
+  .bar:nth-child(2) { height: 75%; background: var(--blue); animation-delay: 0.2s; }
+  .bar:nth-child(3) { height: 55%; background: var(--purple); animation-delay: 0.4s; }
+  .bar:nth-child(4) { height: 90%; background: var(--orange); animation-delay: 0.6s; }
+  .bar:nth-child(5) { height: 65%; animation-delay: 0.8s; }
+  @keyframes barGrow {
+    0%, 100% { transform: scaleY(1); opacity: 0.7; }
+    50% { transform: scaleY(1.15); opacity: 1; }
+  }
+
+  .preview-ml { background: linear-gradient(135deg, #1a0a2e 0%, #0f1a2e 100%); }
+  .neural-net {
+    position: relative;
+    width: 280px;
+    height: 180px;
+  }
+  .nn-node {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border: 2px solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    animation: pulse-node 2s ease-in-out infinite;
+  }
+  @keyframes pulse-node {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+  }
+
+  .preview-scraping { background: linear-gradient(135deg, #0f1a0a 0%, #0a1a1a 100%); }
+  .scrape-lines {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 2;
+    padding: 1.5rem;
+  }
+  .scrape-lines > div {
+    opacity: 0;
+    animation: fadeInLine 0.5s forwards;
+  }
+  .scrape-lines > div:nth-child(1) { animation-delay: 0s; }
+  .scrape-lines > div:nth-child(2) { animation-delay: 0.3s; }
+  .scrape-lines > div:nth-child(3) { animation-delay: 0.6s; }
+  .scrape-lines > div:nth-child(4) { animation-delay: 0.9s; }
+  .scrape-lines > div:nth-child(5) { animation-delay: 1.2s; }
+  .scrape-lines > div:nth-child(6) { animation-delay: 1.5s; }
+  @keyframes fadeInLine {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .preview-nlp { background: linear-gradient(135deg, #1a0a1a 0%, #0a0a1a 100%); }
+  .word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    max-width: 320px;
+    justify-content: center;
+    align-items: center;
+  }
+  .word-cloud span {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .project-info {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .project-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 1.5px;
+    margin-bottom: 0.8rem;
+  }
+  .project-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.5px;
+  }
+  .project-info p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.8rem;
+    justify-content: center;
+  }
+  .project-tech span {
+    padding: 0.4rem 0.9rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-secondary);
+  }
+  .project-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: auto;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+  .project-link:hover { 
+    transform: translateX(5px); 
+  }
+
+  /* ---- TESTIMONIALS ---- */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .testimonial-card {
+    background: var(--bg-card);
+    background-image: 
+      linear-gradient(to bottom right, rgba(88, 166, 255, 0.03) 0%, transparent 30%, rgba(9, 105, 218, 0.03) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.3s;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 6rem;
+    color: var(--accent-dim);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .testimonial-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .testimonial-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .author-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .author-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .stars {
+    color: var(--yellow);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ---- MODAL ---- */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    overflow: auto;
+    animation: fadeIn 0.3s;
+  }
+  .modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .modal-content {
+    position: relative;
+    width: 95%;
+    height: 95%;
+    background: var(--bg-primary);
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    overflow: hidden;
+    animation: slideUp 0.4s;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-content iframe {
+    width: 100%;
+    flex: 1;
+    border: none;
+    display: block;
+    height: calc(100% - 50px);
+  }
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact-section {
+    text-align: center;
+    padding: 6rem 3rem;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+  }
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+  }
+  .contact-card {
+    background: var(--bg-card);
+    background-image: 
+      radial-gradient(circle at 100% 0%, rgba(88, 166, 255, 0.05) 0%, transparent 40%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .contact-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .contact-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .contact-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .contact-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .contact-btn {
+    padding: 1rem 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+  .contact-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+    color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    padding: 2.5rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 1024px) {
+    .project-card { grid-template-columns: 1fr; }
+    .project-preview { height: 250px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-center { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero h1 { font-size: 2.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .section-title { font-size: 2rem; }
+    .hero-stats { flex-direction: column; gap: 1.5rem; }
+    .pricing-card.featured { transform: scale(1); }
+    .modal-content { width: 98%; height: 98%; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Hemanth<span>.</span><span class="logo-tag">Python Dev</span></a>
+  <ul class="nav-center">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://github.com/pydev0" target="_blank" class="nav-github"><i class="fab fa-github"></i></a>
+    <a href="/cdn-cgi/l/email-protection#ddb5b8b0bcb3a9b5b6bcaebca8b69dbab0bcb4b1f3beb2b0e2aea8bfb7b8bea9e08dafb2b7b8bea9f8efed8ca8b2a9b8f8efed8fb8aca8b8aea9fbbfb2b9a4e095b4f8efed95b8b0bcb3a9b5f1f8ed99f8ed9cf8ed99f8ed9c94f8efedb3b8b8b9f8efedb5b8b1adf8efedaab4a9b5e7f8ed99f8ed9cf8ed99f8ed9c8dafb2b7b8bea9f8efeda9a4adb8e7f8efedf8ed99f8ed9c9fa8b9bab8a9e7f8efedf8ed99f8ed9c89b4b0b8b1b4b3b8e7f8efedf8ed99f8ed9cf8ed99f8ed9c8db1b8bcaeb8f8efedaeb8b3b9f8efedb0b8f8efedbcf8efedaca8b2a9b8f3f8ed99f8ed9cf8ed99f8ed9c89b5bcb3b6aefc" class="nav-cta">Get Free Quote →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>Available Now • Responds in 24hrs</span>
+    </div>
+    <h1>Python Developer Specializing in <span class="highlight">Data & Automation</span></h1>
+    <p class="hero-desc">
+      I build custom dashboards, ML models, and web scrapers for businesses. Professional code, unlimited revisions, fair pricing. See my work below.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#services" class="btn btn-primary">View My Services</a>
+      <a href="#portfolio" class="btn btn-secondary">See Live Demos</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Technologies Mastered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24hr</div>
+        <div class="stat-label">Response Time</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Live Demo Projects</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">// Services</div>
+  <h2 class="section-title">What I Can Do</h2>
+  <p class="section-desc">Here's what I can build for you. Click any project below to see working examples.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+      <h3>Interactive Dashboards</h3>
+      <p>I'll create dashboards that turn your raw data into visual insights with charts, KPIs, and filters.</p>
+      <ul class="service-features">
+        <li>✓ Real-time data updates</li>
+        <li>✓ Custom charts & graphs</li>
+        <li>✓ Export to PDF/Excel</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-brain"></i></div>
+      <h3>Machine Learning Models</h3>
+      <p>Build predictive models for forecasting, classification, or recommendation systems using your data.</p>
+      <ul class="service-features">
+        <li>✓ Customer churn prediction</li>
+        <li>✓ Sales forecasting</li>
+        <li>✓ Recommendation engines</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-spider"></i></div>
+      <h3>Web Scraping & Automation</h3>
+      <p>Automatically collect data from websites, competitor prices, job listings, or product catalogs.</p>
+      <ul class="service-features">
+        <li>✓ Product price monitoring</li>
+        <li>✓ Lead generation</li>
+        <li>✓ Data extraction to Excel</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+      <h3>Data Analysis & Reports</h3>
+      <p>Clean messy data, find patterns, and create professional reports with insights and recommendations.</p>
+      <ul class="service-features">
+        <li>✓ Excel/CSV data cleaning</li>
+        <li>✓ Statistical analysis</li>
+        <li>✓ Custom reports</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-comments"></i></div>
+      <h3>Sentiment Analysis</h3>
+      <p>Analyze customer reviews, social media, or feedback to understand sentiment and extract key themes.</p>
+      <ul class="service-features">
+        <li>✓ Review analysis</li>
+        <li>✓ Social media monitoring</li>
+        <li>✓ Keyword extraction</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-server"></i></div>
+      <h3>APIs & Backends</h3>
+      <p>Need an API to connect your app to your data? I can build backend systems that handle requests securely.</p>
+      <ul class="service-features">
+        <li>✓ REST API development</li>
+        <li>✓ Database integration</li>
+        <li>✓ Authentication & security</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section id="benefits">
+  <div class="section-label">// Here's What You Get</div>
+  <h2 class="section-title">Why Work With Me</h2>
+  <p class="section-desc">I'm building my reputation, which means you get great work at fair prices.</p>
+  
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-dollar-sign"></i></div>
+      <h3>Fair Pricing</h3>
+      <p>I'm building my portfolio, so rates are reasonable</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-sync-alt"></i></div>
+      <h3>Unlimited Revisions</h3>
+      <p>I'll keep working until you're 100% happy</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-code"></i></div>
+      <h3>Clean Code</h3>
+      <p>Well-organized, commented code you can understand</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+      <h3>Good Communication</h3>
+      <p>Quick replies and regular progress updates</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
+      <h3>Motivated</h3>
+      <p>I'm eager to build my reputation with quality work</p>
+    </div>
+    <div class="benefit-card">
+      <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+      <h3>Risk-Free</h3>
+      <p>Not satisfied? You get your money back, no questions asked</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-label">// Live Demos</div>
+  <h2 class="section-title">My Work</h2>
+  <p class="section-desc">Here's what I can build for you. Click any project below to see working examples.</p>
+
+  <div class="projects-grid">
+    
+    <div class="project-card" onclick="openModal('sales-dashboard')">
+      <div class="project-preview preview-dashboard">
+        <div class="project-preview-inner">
+          <div class="chart-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <h3>Sales Analytics Dashboard</h3>
+        <p>Interactive dashboard analyzing sales data across 150+ products. Features dynamic KPIs, trend analysis, regional breakdown, and custom filters. Built with Chart.js for responsive data visualization.</p>
+        <div class="project-tech">
+          <span>Chart.js</span><span>JavaScript</span><span>Responsive Design</span>
+        </div>
+        <span class="project-link">View Live Demo →</span>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openModal('churn-predictor')">
+      <div class="project-preview preview-ml">
+        <div class="project-preview-inner">
+          <div class="neural-net">
+            <div class="nn-node" style="top:25%;left:15%;border-color:var(--purple);color:var(--purple);"></div>
+            <div class="nn-node" style="top:55%;left:15%;border-color:var(--purple);color:var(--purple);"></div>
+            <div class="nn-node" style="top:85%;left:15%;border-color:var(--purple);color:var(--purple);"></div>
+            <div class="nn-node" style="top:20%;left:40%;border-color:var(--blue);color:var(--blue);"></div>
+            <div class="nn-node" style="top:45%;left:40%;border-color:var(--blue);color:var(--blue);"></div>
+            <div class="nn-node" style="top:70%;left:40%;border-color:var(--blue);color:var(--blue);"></div>
+            <div class="nn-node" style="top:95%;left:40%;border-color:var(--blue);color:var(--blue);"></div>
+            <div class="nn-node" style="top:30%;left:65%;border-color:var(--accent);color:var(--accent);"></div>
+            <div class="nn-node" style="top:60%;left:65%;border-color:var(--accent);color:var(--accent);"></div>
+            <div class="nn-node" style="top:90%;left:65%;border-color:var(--accent);color:var(--accent);"></div>
+            <div class="nn-node" style="top:50%;left:85%;border-color:var(--orange);color:var(--orange);"></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <h3>Customer Churn Prediction</h3>
+        <p>ML model for customer churn prediction achieving 94% accuracy on test data. Real-time predictions with feature importance and risk scoring. XGBoost-powered classification with full ML pipeline.</p>
+        <div class="project-tech">
+          <span>Scikit-learn</span><span>XGBoost</span><span>ML Pipeline</span>
+        </div>
+        <span class="project-link">View Live Demo →</span>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openModal('web-scraper')">
+      <div class="project-preview preview-scraping">
+        <div class="project-preview-inner">
+          <div class="scrape-lines">
+            <div><span style="color:var(--accent)">►</span> <span style="color:var(--text-muted)">Connecting to target...</span></div>
+            <div><span style="color:var(--accent)">►</span> <span style="color:var(--yellow)">Rotating proxy:</span> <span style="color:var(--text-secondary)">185.xx.xx.42</span></div>
+            <div><span style="color:var(--accent)">►</span> <span style="color:var(--blue)">Parsing</span> <span style="color:var(--text-secondary)">page 1/248...</span></div>
+            <div><span style="color:var(--accent)">►</span> <span style="color:var(--green)">Extracted:</span> <span style="color:var(--text-secondary)">12,847 records</span></div>
+            <div><span style="color:var(--accent)">►</span> <span style="color:var(--purple)">Cleaning data...</span></div>
+            <div><span style="color:var(--accent)">►</span> <span style="color:var(--green)">✓ Export complete</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <h3>E-Commerce Price Scraper</h3>
+        <p>Automated scraper capable of collecting thousands of products daily from multiple sites. Includes proxy rotation, CAPTCHA handling, and price tracking. Scrapy-based solution with PostgreSQL storage.</p>
+        <div class="project-tech">
+          <span>Scrapy</span><span>Selenium</span><span>PostgreSQL</span>
+        </div>
+        <span class="project-link">View Live Demo →</span>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openModal('sentiment-analyzer')">
+      <div class="project-preview preview-nlp">
+        <div class="project-preview-inner">
+          <div class="word-cloud">
+            <span style="font-size:1.3rem;color:var(--accent);background:var(--accent-dim);">positive</span>
+            <span style="font-size:0.8rem;color:var(--text-muted);background:rgba(255,255,255,0.03);">neutral</span>
+            <span style="font-size:1.1rem;color:#ff5f57;background:rgba(255,95,87,0.15);">negative</span>
+            <span style="font-size:0.9rem;color:var(--blue);background:rgba(77,139,255,0.15);">trending</span>
+            <span style="font-size:1.4rem;color:var(--yellow);background:rgba(251,191,36,0.15);">viral</span>
+            <span style="font-size:1rem;color:var(--orange);background:rgba(255,107,53,0.15);">growth</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <h3>Social Media Sentiment Analyzer</h3>
+        <p>NLP tool for analyzing social media posts in real-time. BERT-based sentiment classification, keyword extraction, and trend detection. Production-ready text processing with transformer models.</p>
+        <div class="project-tech">
+          <span>Transformers</span><span>NLTK</span><span>Real-time Processing</span>
+        </div>
+        <span class="project-link">View Live Demo →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH SKILLS -->
+<section id="skills">
+  <div class="section-label">// What I Know</div>
+  <h2 class="section-title">Technologies & Tools</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;"><i class="fab fa-python"></i></div>
+      <h3>Python</h3>
+      <p>Core language for all data work, automation, and backend development</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-chart-pie"></i></div>
+      <h3>Data Analysis</h3>
+      <p>Pandas, NumPy, Matplotlib for data cleaning, processing, and visualization</p>
+    </div>
+    <div class="testimonial-card">
+      <div class="benefit-icon" style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-robot"></i></div>
+      <h3>Machine Learning</h3>
+      <p>Scikit-learn, XGBoost, TensorFlow for predictive models and classification</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">// How It Works</div>
+  <h2 class="section-title">My Process</h2>
+
+  <div class="process-timeline">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h3>Tell Me What You Need</h3>
+      <p>Send me your requirements - what problem you're trying to solve, what data you have, and your deadline.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h3>I Send You a Quote</h3>
+      <p>Within 24 hours, I'll send you a fixed price and timeline. No hidden fees or surprises.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h3>I Build It</h3>
+      <p>I'll keep you updated with regular progress reports. Ask questions anytime.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <h3>You Get Your Solution</h3>
+      <p>Receive the finished project with documentation. Free revisions until you're happy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label">// Get In Touch</div>
+  <h2 class="section-title">Let's Talk</h2>
+  <p class="section-desc">Have a project? Send me a message and I'll get back to you within 24 hours with a quote.</p>
+
+  <div class="contact-methods">
+    <div class="contact-card">
+      <div class="icon">💰</div>
+      <h3>Fair Prices</h3>
+      <p>I'm building my portfolio, so rates are reasonable</p>
+    </div>
+    <div class="contact-card">
+      <div class="icon">💯</div>
+      <h3>Refund if Unhappy</h3>
+      <p>Not satisfied? You get your money back</p>
+    </div>
+    <div class="contact-card">
+      <div class="icon">📝</div>
+      <h3>Free Quote</h3>
+      <p>No commitment required - just tell me what you need</p>
+    </div>
+  </div>
+
+  <div class="contact-links">
+    <a href="/cdn-cgi/l/email-protection#e28a878f838c968a898391839789a2858f838b8ecc818d8f" class="contact-btn"><i class="fas fa-envelope"></i> Email Me</a>
+    <a href="https://github.com/pydev0" target="_blank" class="contact-btn"><i class="fab fa-github"></i> View My GitHub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Hemanth. All rights reserved.</p>
+</footer>
+
+<!-- MODALS -->
+<div id="modal-sales-dashboard" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('sales-dashboard')">✕</button>
+    <iframe id="iframe-sales-dashboard" frameborder="0"></iframe>
+  </div>
+</div>
+
+<div id="modal-churn-predictor" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('churn-predictor')">✕</button>
+    <iframe id="iframe-churn-predictor" frameborder="0"></iframe>
+  </div>
+</div>
+
+<div id="modal-web-scraper" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('web-scraper')">✕</button>
+    <iframe id="iframe-web-scraper" frameborder="0"></iframe>
+  </div>
+</div>
+
+<div id="modal-sentiment-analyzer" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('sentiment-analyzer')">✕</button>
+    <iframe id="iframe-sentiment-analyzer" frameborder="0"></iframe>
+  </div>
+</div>
+
+<script>
+
+const projectFiles = {
+  'sales-dashboard': 'sales-dashboard.html',
+  'churn-predictor': 'churn-predictor.html',
+  'web-scraper': 'web-scraper.html',
+  'sentiment-analyzer': 'sentiment-analyzer.html'
+};
+
+function openModal(projectId) {
+  const modal = document.getElementById('modal-' + projectId);
+  const iframe = document.getElementById('iframe-' + projectId);
+  if (!modal || !iframe) return;
+  if (!iframe.src || iframe.src === window.location.href) {
+    iframe.src = projectFiles[projectId];
+  }
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(projectId) {
+  const modal = document.getElementById('modal-' + projectId);
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.active').forEach(function(modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  }
+});
+
+document.querySelectorAll('.modal').forEach(function(modal) {
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>

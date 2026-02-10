@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce Price Intelligence Scraper</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/web-scraper.css">
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1><span class="live"></span> E-Commerce Price Intelligence Scraper</h1>
+    <p>Multi-site product tracker · Scrapy + Selenium · Proxy rotation enabled</p>
+  </div>
+  <button class="run-btn" id="runBtn" onclick="startScrape()">▶ Run Scraper</button>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="l">Products Tracked</div><div class="v" id="kTotal" style="color:var(--acc)">0</div><div class="d neu">across all sites</div></div>
+  <div class="kpi"><div class="l">Price Drops</div><div class="v" id="kDrops" style="color:var(--grn)">0</div><div class="d up">savings detected</div></div>
+  <div class="kpi"><div class="l">Price Rises</div><div class="v" id="kRises" style="color:var(--red)">0</div><div class="d dn">increases flagged</div></div>
+  <div class="kpi"><div class="l">Sites Scraped</div><div class="v" id="kSites" style="color:var(--bl)">0</div><div class="d neu">of 4 targets</div></div>
+  <div class="kpi"><div class="l">Success Rate</div><div class="v" id="kRate" style="color:var(--yl)">—</div><div class="d neu">request success</div></div>
+</div>
+
+<!-- Target sites -->
+<div class="sites" id="siteList">
+  <div class="site" id="s-amazon"><div class="site-dot"></div>Amazon</div>
+  <div class="site" id="s-ebay"><div class="site-dot"></div>eBay</div>
+  <div class="site" id="s-walmart"><div class="site-dot"></div>Walmart</div>
+  <div class="site" id="s-bestbuy"><div class="site-dot"></div>Best Buy</div>
+</div>
+
+<div class="row r2w">
+  <!-- Terminal -->
+  <div>
+    <div class="term">
+      <div class="term-bar"><div class="td"></div><div class="td"></div><div class="td"></div><span>scraper.py</span></div>
+      <div class="term-body" id="terminal"><div class="term-idle">Click "Run Scraper" to start the pipeline...</div></div>
+    </div>
+    <div class="prog-wrap" id="progWrap" style="display:none">
+      <div class="prog-label"><span id="progText">Initializing...</span><span id="progPct">0%</span></div>
+      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+    </div>
+  </div>
+  <!-- Price Alerts -->
+  <div class="card">
+    <div class="card-t">🔔 Price Alerts</div>
+    <div class="card-s">Significant changes detected</div>
+    <div class="alerts" id="alertBox"><div style="color:var(--t3);font-size:.82rem;font-style:italic">No alerts yet — run the scraper</div></div>
+  </div>
+</div>
+
+<!-- Scraped Products Table -->
+<div class="card" style="margin-top:1.2rem">
+  <div class="card-t">Scraped Products — Price Tracker</div>
+  <div class="card-s" id="tableStatus">Waiting for scraper...</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Product</th><th>Site</th><th>Category</th><th>Current</th><th>Previous</th><th>Change</th><th>Status</th></tr></thead>
+      <tbody id="prodTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Charts -->
+<div class="row r2" style="margin-top:1.2rem">
+  <div class="card">
+    <div class="card-t">Price History — 30 Day Trend</div>
+    <div class="card-s">Top 4 tracked products</div>
+    <div class="chart-w"><canvas id="historyChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-t">Category Breakdown</div>
+    <div class="card-s">Products scraped by category</div>
+    <div class="chart-w"><canvas id="catChart"></canvas></div>
+  </div>
+</div>
+
+<div class="built">
+  <span>Built with Python · Scrapy · Selenium · PostgreSQL · Celery</span>
+  <div class="ttags"><span class="ttag">Scrapy</span><span class="ttag">Selenium</span><span class="ttag">PostgreSQL</span><span class="ttag">Celery</span></div>
+</div>
+
+<script src="js/web-scraper.js"></script>
+</body>
+</html>

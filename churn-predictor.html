@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Churn Prediction Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="css/churn-predictor.css">
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1><span class="live"></span> Customer Churn Prediction Engine</h1>
+    <p>Dataset: Kaggle Telco Customer Churn · 7,043 customers · XGBoost + Random Forest</p>
+  </div>
+  <div class="model-badge">Model v2.1 · XGBoost</div>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="l">Accuracy</div><div class="v" style="color:var(--acc)">95.1%</div><div class="d">on test set (n=2000)</div></div>
+  <div class="kpi"><div class="l">Precision</div><div class="v" style="color:var(--bl)">87.8%</div><div class="d">positive class</div></div>
+  <div class="kpi"><div class="l">Recall</div><div class="v" style="color:var(--pu)">92.4%</div><div class="d">churn detection rate</div></div>
+  <div class="kpi"><div class="l">F1 Score</div><div class="v" style="color:var(--or)">90.1%</div><div class="d">harmonic mean</div></div>
+  <div class="kpi"><div class="l">AUC-ROC</div><div class="v" style="color:var(--yl)">0.964</div><div class="d">area under curve</div></div>
+</div>
+
+<div class="row r2">
+  <div class="card">
+    <div class="card-t">Feature Importance — SHAP Values</div>
+    <div class="card-s">Top 10 features driving churn predictions</div>
+    <div class="chart-w"><canvas id="featChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-t">Confusion Matrix</div>
+    <div class="card-s">Test set · n=2,000</div>
+    <div class="cm-grid">
+      <div class="cm-corner"></div>
+      <div class="cm-label">Pred: Stay</div>
+      <div class="cm-label">Pred: Churn</div>
+      <div class="cm-label" style="writing-mode:vertical-lr;transform:rotate(180deg)">Actual: Stay</div>
+      <div class="cm-cell cm-tn"><div class="num">1,453</div><div class="lbl">True Neg</div></div>
+      <div class="cm-cell cm-fp"><div class="num">62</div><div class="lbl">False Pos</div></div>
+      <div class="cm-label" style="writing-mode:vertical-lr;transform:rotate(180deg)">Actual: Churn</div>
+      <div class="cm-cell cm-fn"><div class="num">37</div><div class="lbl">False Neg</div></div>
+      <div class="cm-cell cm-tp"><div class="num">448</div><div class="lbl">True Pos</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="row r2e" style="margin-top:1.2rem">
+  <div class="card">
+    <div class="card-t">Churn Probability Distribution</div>
+    <div class="card-s">Histogram of predicted probabilities</div>
+    <div class="chart-w" style="height:220px"><canvas id="distChart"></canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-t">ROC Curve</div>
+    <div class="card-s">AUC = 0.964 · Random baseline in grey</div>
+    <div class="chart-w" style="height:220px"><canvas id="rocChart"></canvas></div>
+  </div>
+</div>
+
+<!-- Live predictor -->
+<div class="predictor">
+  <h3>🔮 Try It — Predict Churn for a Customer</h3>
+  <div class="sub">Adjust the inputs below and click Predict to see the model's output in real-time</div>
+  <div class="form-grid">
+    <div class="field">
+      <label>Contract Type</label>
+      <select id="fContract"><option value="0">Month-to-month</option><option value="1">One year</option><option value="2">Two year</option></select>
+    </div>
+    <div class="field">
+      <label>Monthly Charges ($)</label>
+      <input type="number" id="fCharges" value="70" min="18" max="120">
+    </div>
+    <div class="field">
+      <label>Tenure (months)</label>
+      <input type="number" id="fTenure" value="12" min="0" max="72">
+    </div>
+    <div class="field">
+      <label>Tech Support</label>
+      <select id="fTech"><option value="0">No</option><option value="1">Yes</option></select>
+    </div>
+    <div class="field">
+      <label>Internet Service</label>
+      <select id="fNet"><option value="0">DSL</option><option value="1">Fiber optic</option><option value="2">None</option></select>
+    </div>
+    <div class="field">
+      <label>Payment Method</label>
+      <select id="fPay"><option value="0">Electronic check</option><option value="1">Mailed check</option><option value="2">Bank transfer</option><option value="3">Credit card</option></select>
+    </div>
+  </div>
+  <button class="predict-btn" onclick="predict()">⚡ Predict Churn</button>
+  <div class="result-box" id="resultBox">
+    <div class="result-row">
+      <div class="result-item"><div class="rl">Prediction</div><div class="rv" id="resPred">—</div></div>
+      <div class="sep"></div>
+      <div class="result-item"><div class="rl">Churn Probability</div><div class="rv" id="resProb" style="font-family:'JetBrains Mono',monospace">—</div></div>
+      <div class="sep"></div>
+      <div class="result-item" style="flex:1"><div class="rl">Risk Level</div><div class="result-bar"><div class="result-fill" id="resBar" style="width:0%;background:var(--grn)"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Sample predictions table -->
+<div class="card" style="margin-top:1.5rem">
+  <div class="card-t">Sample Predictions — Recent Customers</div>
+  <div class="card-s">Showing 8 example predictions from the test set</div>
+  <table>
+    <thead><tr><th>Customer ID</th><th>Contract</th><th>Tenure</th><th>Monthly $</th><th>Churn Prob</th><th>Prediction</th></tr></thead>
+    <tbody id="predTable"></tbody>
+  </table>
+</div>
+
+<div class="built">
+  <span>Built with Python · Scikit-learn · XGBoost · SHAP · Kaggle Telco Churn Dataset</span>
+  <div class="ttags"><span class="ttag">Scikit-learn</span><span class="ttag">XGBoost</span><span class="ttag">SHAP</span><span class="ttag">MLflow</span></div>
+</div>
+
+<script src="js/churn-predictor.js"></script>
+</body>
+</html>
